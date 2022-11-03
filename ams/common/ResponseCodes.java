@@ -1,5 +1,8 @@
-package WEB-INF.classes.com.ams.common;
+package com.ams.common;
 
+/**
+ * @author mohammad.bassam
+ */
 public class ResponseCodes {
 
     public static String SUCCESS = "SUCCESS";

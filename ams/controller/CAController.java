@@ -176,9 +176,12 @@ public class CAController {
     public List<Map<String, Object>> getPortfolioData(String vfundcode, String fData, String tDate) {
         List<Map<String, Object>> data = null;
         try {
-
-            data = this.jdbcTemplate.queryForList("select f.fund_name as name,\n       t.symbol,\n       to_char(t.price_date, 'dd/mm/yyyy') price_date , \n       t.hft_volume\n  from equity_portfolio t , fund f \n where t.fund_code = '" + vfundcode + "' and t.fund_code = f.fund_code \n   and t.price_date between to_date('" + fData + "','dd/mm/yyyy') and to_date('" + tDate + "','dd/mm/yyyy') \n order by 3");
-
+            data = this.jdbcTemplate.queryForList("select f.fund_name as name," +
+                    "t.symbol, to_char(t.price_date, 'dd/mm/yyyy') price_date," +
+                    "t.hft_volume  from equity_portfolio t , fund f " +
+                    "where t.fund_code = '" + vfundcode + "' and " +
+                    "t.fund_code = f.fund_code  and t.price_date between to_date('" + fData + "','dd/mm/yyyy') " +
+                    "and to_date('" + tDate + "','dd/mm/yyyy') order by 3");
 
         } catch (Exception ex) {
             Logger.getLogger(com.ams.controller.CAController.class.getName()).log(Level.SEVERE, (String) null, ex);
